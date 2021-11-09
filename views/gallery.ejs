@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+			  rel="stylesheet" 
+			  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			  crossorigin="anonymous">
+
+		<title> <%= gallery_name %> </title>
+	</head>
+
+	<%- include ("./templates/header") %>
+	<body>
+		<main>
+			<form id='gallery' action='/view_img' method='post'>
+				<% for (var i = 0; i < docs.length; i++) { %>
+				<input class="image_button" 
+					   type="image" 
+					   src='<%= docs[i].url %>'
+					   name='img'
+					   value='<%= docs[i].work_title %>'>
+					   <% } %>
+			</form>
+
+			<div id='sidebar'>
+				<% if (selected) { %>
+				<div class='information'>
+					<img src='<%= selected.url %>'>
+					<h3> <%= selected.work_title %> </h3>
+					<p> <%= selected.author %> </p>
+					<p> <%= selected.date %> </p>
+					<p> <%= selected.description %></p>
+				</div>
+				<div class='comment_editor'>
+					<% if (comment_to_edit) { %>
+					<h5> Edita tu comentario </h5>
+					<form class='form' action='/publishComment' method='post'>
+						<div class='form-group mb-2'>
+							<input class="form-control" 
+								   name='update_comment'i
+								   value='<%= comment_to_edit.text %>'>
+							</input>
+						</div>
+						<button type='submit' class="btn btn-primary mb-2"> 
+							Guardar cambios
+						</button>
+					</form>
+					<% } else { %>
+					<h5>Deja un comentario</h5>
+					<form class='form' action='/publishComment' method='post'>
+						<div class='form-group mb-2'>
+							<input class="form-control" name='comment'> </input>
+						</div>
+						<button type='submit' class="btn btn-primary mb-2"> 
+							Enviar 
+						</button>
+					</form>
+					<% } %>
+				</div>
+				<div class='comment_section'>
+					<h5>Comentarios</h5>
+					<ul class="list-group list-group-flush">
+						<% if (comments) { %>
+						<% for (var i = 0; i < comments.length; i++) { %>
+						<% if (comments[i].user == user) { %>
+						<li class="list-group-item comment">
+							<label>
+								<b>Yo:</b> <%= comments[i].text %>
+							</label>
+							<form action='comment_change' method='post'>
+							<div class='btn-group btn-group-sm' role='group'>
+								<button type='submit' 
+										class='btn btn-outline-secondary'
+										name='edit'
+										value='<%=comments[i].user%>,<%=comments[i].artwork%>'>
+									edit 
+								</button>
+								<button type='submit' 
+										class='btn btn-outline-danger'
+										name='delete'
+										value='<%=comments[i].user%>,<%=comments[i].artwork%>'>
+									delete
+								</button>
+							</div>
+							</form>
+						</li>
+						<% } else { %>
+						<li class="list-group-item comment">
+							<label>
+								<b> <%= comments[i].user %>: </b> 
+								<%= comments[i].text %>
+							</label>
+						</li>
+						<% } %>
+						<% } %>
+						<% } %>
+					</ul>
+				</div>
+				<% } else { %>
+				<div class='information'>
+					<h3> Selecciona una obra </h3>
+				</div>
+				<% } %>
+			</div>
+		</main>
+	</body>
+	<style>
+
+main {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-content: flex-start;
+}
+
+#gallery {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	align-content: flex-start;
+	width: 50%;
+}
+
+.image_button {
+	display: flex;
+	width: auto;
+	height: 200px;
+	margin: 5px;
+}
+
+#sidebar {
+	display: flex;
+	flex-flow: column wrap;
+	background-color: #dddddd;
+	border-radius: 25px;
+	padding: 15px;
+	margin-button: 5px;
+	width: 45%;
+}
+
+img {
+	display: flex;
+	width: 98%;
+	height: auto;
+	margin: 5px;
+}
+
+.information {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	margin: 5px;
+}
+
+.comment_editor {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	margin: 5px
+}
+
+.comment_section {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	margin: 5px
+}
+
+.comment {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+	</style>
+</html>

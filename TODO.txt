@@ -1,0 +1,12 @@
+
++ realizado
+- no realizado
+
++ crear template de header
++ crear template de galería
++ diseñar base de datos
+- implementar búsqueda de obras de acuerdo a la galería
+- desplegar obras en la galería
+- implementar barra lateral para galería:
+	esta despliega información sobre la obra y justo después muestra los
+	comentarios realizados por otros usuarios.

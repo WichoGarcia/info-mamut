@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "61017a4ed293c5427ab8c544"
+  },
+  "work_title": "Ring Galaxy",
+  "date": "28/07/2021",
+  "description": "The rim of the large blue galaxy at the right is an immense ring-like structure 150,000 light years in diameter composed of newly formed, extremely bright, massive stars. AM 0644-741 is known as a ring galaxy and was caused by an immense galaxy collision. When galaxies collide, they pass through each other and their individual stars rarely come into contact. The large galaxy's ring-like shape is the result of the gravitational disruption caused by a small intruder galaxy passing through it. When this happens, interstellar gas and dust become compressed, causing a wave of star formation to move out from the impact point like a ripple across the surface of a pond. Other galaxies in the field of view are background galaxies, not interacting with AM 0644-741. Foreground spiky stars are within our own Milky Way. But the smaller intruder galaxy is caught above and right, near the top of the frame taken by the Hubble Space Telescope. Ring galaxy AM 0644-741 lies about 300 million light years away toward the southern constellation Volans.",
+  "gallery": "solar",
+  "url": "images/ring_galaxy.jpg"
+},{
+  "_id": {
+    "$oid": "61017a81d293c5427ab8c545"
+  },
+  "work_title": "Fleming's Triangular Wisp",
+  "date": "27/07/2021",
+  "description": "Chaotic in appearance, these tangled filaments of shocked, glowing gas are spread across planet Earth's sky toward the constellation of Cygnus as part of the Veil Nebula. The Veil Nebula itself is a large supernova remnant, an expanding cloud born of the death explosion of a massive star. Light from the original supernova explosion likely reached Earth over 5,000 years ago. The glowing filaments are really more like long ripples in a sheet seen almost edge on, remarkably well separated into the glow of ionized hydrogen atoms shown in blue and oxygen in red hues. Also known as the Cygnus Loop and cataloged as NGC 6979, the Veil Nebula now spans about 6 times the diameter of the full Moon. The length of the wisp corresponds to about 30 light years, given its estimated distance of 2,400 light years. Often identified as Pickering's Triangle for a director of Harvard College Observatory, it is also named for its discoverer, astronomer Williamina Fleming, as Fleming's Triangular Wisp.",
+  "gallery": "solar",
+  "url": "images/flemings_triangular_wisp.jpg"
+},{
+  "_id": {
+    "$oid": "61017cc6d293c5427ab8c546"
+  },
+  "work_title": "CG4: A Ruptured Cometary Globule",
+  "date": "26/07/2021",
+  "description": "Can a gas cloud grab a galaxy? It's not even close. The \"claw\" of this odd looking \"creature\" in the featured photo is a gas cloud known as a cometary globule. This globule, however, has ruptured. Cometary globules are typically characterized by dusty heads and elongated tails. These features cause cometary globules to have visual similarities to comets, but in reality they are very much different. Globules are frequently the birthplaces of stars, and many show very young stars in their heads. The reason for the rupture in the head of this object is not yet known. The galaxy to the left of the globule is huge, very far in the distance, and only placed near CG4 by chance superposition.",
+  "gallery": "solar",
+  "url": "images/cg4.jpg"
+},{
+  "_id": {
+    "$oid": "61017dd6d293c5427ab8c547"
+  },
+  "work_title": "Crescent Neptune and Triton",
+  "date": "26/07/2021",
+  "description": "Gliding silently through the outer Solar System, the Voyager 2 spacecraft camera captured Neptune and Triton together in crescent phase. The elegant picture of the ice-giant planet and its cloudy moon was taken from behind just after closest approach in 1989. It could not have been taken from Earth because Neptune never shows a crescent phase to sunward Earth. The unusual vantage point also robs Neptune of its familiar blue hue, as sunlight seen from here is scattered forward, and so is reddened like the setting Sun. Neptune is smaller but more massive than Uranus, has several dark rings, and emits more light than it receives from the Sun.",
+  "gallery": "solar",
+  "url": "images/neptune_voyager.jpg"
+},{
+  "_id": {
+    "$oid": "61018191d293c5427ab8c548"
+  },
+  "work_title": "Elephant, Bat, and Squid",
+  "date": "23/07/2021",
+  "description": "Sprawling emission nebulae IC 1396 and Sh2-129 mix glowing interstellar gas and dark dust clouds in this 10 degree wide field of view toward the northern constellation Cepheus the King. Energized by its bluish central star IC 1396 (left) is hundreds of light-years across and some 3,000 light-years distant. The nebula's intriguing dark shapes include a winding dark cloud popularly known as the Elephant's Trunk below and right of center. Tens of light-years long, it holds the raw raw material for star formation and is known to hide protostars within. Located a similar distance from planet Earth, the bright knots and swept back ridges of emission of Sh2-129 on the right suggest its popular name, the Flying Bat Nebula. Within the Flying Bat, the most recently recognized addition to this royal cosmic zoo is the faint bluish emission from Ou4, the Giant Squid nebula.",
+  "gallery": "solar",
+  "url": "images/elephant_bat_squid.jpg"
+}]
