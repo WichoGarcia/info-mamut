@@ -1,0 +1,688 @@
+/**BIENVENIDOS AL HIMALAYA **/
+
+
+/**********************/
+
+
+/**GENERALES **/
+
+
+/**********************/
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /**Reset para REMS- 62.5% = 10px de 16px **/
+    scroll-snap-type: y mandatory;
+    overflow-x: hidden;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+p,
+i {
+    font-size: 1.6rem;
+}
+
+.d-flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+    text-align: center;
+}
+
+.navbar-tools {
+    display: flex;
+    justify-content: space-around;
+    background-color: #1b263b;
+    color: white;
+    padding: 2rem 1.5rem;
+    overflow: hidden;
+}
+
+.contenedor-body {
+    width: 95%;
+    max-width: 150rem;
+    margin: 8rem auto;
+}
+
+.subtitulo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+    color: #415a77;
+}
+
+
+/**********************/
+
+
+/**BARRA DE NAVEGACION**/
+
+
+/**********************/
+
+header i {
+    color: white;
+    font-size: 2.2rem;
+    margin-right: 1rem;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #1b263b;
+}
+
+
+/**Logo**/
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo p {
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-weight: 400;
+}
+
+
+/**Barra de busqueda**/
+
+.searchbar input {
+    width: 100%;
+    height: 4rem;
+    font-size: 1.4rem;
+    padding: 0 1.5rem;
+    border: none;
+    resize: none;
+    outline: none;
+    margin-top: 2rem;
+}
+
+.searchbar i {
+    margin-right: 0;
+    font-size: 1.4rem;
+}
+
+.icono-flecha {
+    display: none;
+}
+
+.searchbar button {
+    height: 4rem;
+    width: 4rem;
+    border: none;
+    cursor: pointer;
+    margin-left: -2px;
+    background-color: #415a77;
+    border-radius: 5%;
+    margin-top: 2rem;
+}
+
+
+/**Cuenta**/
+
+.account-info-navbar {
+    margin-right: 1rem;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.account-info-navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.account-info-navbar p {
+    font-size: 1.4rem;
+    display: none;
+}
+
+.account-info-navbar i {
+    margin-left: 1rem;
+}
+
+.dropdown-account {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    top: 38%;
+    min-width: 16rem;
+    background-color: #e0e1dd;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-account a {
+    float: none;
+    display: block;
+    text-align: left;
+    padding: 12px 16px;
+    color: #415a77;
+    font-size: 1.4rem;
+}
+
+.dropdown-account a:hover {
+    background-color: #778da9;
+    color: white;
+}
+
+.cart-info-navbar p {
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 1024px) {
+    .logo p {
+        font-size: 2.4rem;
+    }
+    .account-info-navbar p,
+    .icono-flecha {
+        display: block;
+        margin-bottom: 0;
+    }
+    .account-info-navbar {
+        margin-right: 3rem;
+    }
+    .searchbar input {
+        width: 50rem;
+        height: 4rem;
+        font-size: 1.4rem;
+        padding: 0 1.5rem;
+        margin-top: 0;
+    }
+    .searchbar i {
+        margin-right: 0;
+        font-size: 1.4rem;
+    }
+    .searchbar button {
+        height: 4rem;
+        width: 4rem;
+        border: none;
+        margin-left: -2px;
+        margin-top: 0;
+    }
+    .icono-usuario {
+        display: none;
+    }
+    .account-info-navbar:hover .dropdown-account {
+        display: block;
+    }
+}
+
+#Menu-colecciones {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    #textbox-search {
+        order: 4;
+    }
+    .navbar-tools {
+        flex-wrap: wrap;
+        width: 90%;
+        margin: 1rem auto;
+        padding: 0 0 2rem 0;
+        justify-content: space-between;
+    }
+    #Menu-colecciones i {
+        margin-left: 1rem;
+    }
+    #Menu-colecciones {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+    }
+}
+
+
+/**Colecciones**/
+
+.colecciones-navbar ul {
+    display: none;
+}
+
+.display-colecciones-navbar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#Mobile-colecciones li {
+    margin-top: 2rem;
+}
+
+#Mobile-colecciones a:hover {
+    color: #778DA9;
+}
+
+.colecciones-navbar {
+    background-color: #415a77;
+    color: white;
+    padding: 2rem 0;
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 768px) {
+    .colecciones-navbar ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #Mobile-colecciones li {
+        margin-top: 0;
+    }
+}
+
+
+/**********************/
+
+
+/**FOOTER**/
+
+
+/**********************/
+
+footer {
+    background-color: #1b263b;
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sobre-nosotros {
+    width: 20%;
+    margin: 2rem 1rem;
+}
+
+.sobre-nosotros span {
+    font-size: 2.5rem;
+}
+
+.sobre-nosotros p {
+    font-size: 1.5rem;
+    margin: 1rem 0 0 0;
+}
+
+.logo i {
+    font-size: 2rem;
+}
+
+.socialmedia img {
+    width: 3.5rem;
+    margin-right: 1rem;
+}
+
+.socialmedia {
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    footer {
+        display: block;
+        padding: 3rem 2rem;
+    }
+    .sobre-nosotros {
+        width: 100%;
+        margin: 2rem 0 0 0;
+        text-align: center;
+    }
+    .logo-footer {
+        margin: 1rem auto;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+
+/**********************/
+
+
+/**LANDING PAGE**/
+
+
+/**********************/
+
+
+/**CARRUSEL**/
+
+.slides-carrusel img {
+    height: 100vh;
+    width: 100%;
+}
+
+
+/**Bienvenida**/
+
+.bienvenida {
+    margin-top: 4rem;
+}
+
+.logo-bienvenida {
+    color: #0d1b2a;
+    justify-content: center;
+}
+
+.logo-bienvenida p,
+.logo-bienvenida i {
+    font-size: 5rem;
+    margin: 0.5rem;
+}
+
+.logo-bienvenida i {
+    margin-right: 1.5rem;
+}
+
+.bienvenida h3 {
+    font-size: 4rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    color: #0d1b2a;
+    margin-top: 0;
+    font-style: italic;
+}
+
+
+/**Grid de productos**/
+
+.grid-productos,
+.grid-productos-3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    justify-items: center;
+    row-gap: 2rem;
+}
+
+.grid-productos-3 {
+    margin-bottom: 5%;
+}
+
+.producto img {
+    width: 30rem;
+    height: 30rem;
+}
+
+.descripcion-producto {
+    text-align: center;
+}
+
+.coleccion-producto {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #415a77;
+}
+
+.descripcion-producto p,
+.descripcion-producto b {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+
+@media screen and (min-width: 768px) {
+    .grid-productos,
+    .grid-productos-3 {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 4rem;
+        row-gap: 4rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .grid-productos {
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 4rem;
+        row-gap: 4rem;
+    }
+}
+
+
+/**Info sobre Loza**/
+
+.info-loza {
+    display: block;
+    justify-items: center;
+    text-align: center;
+}
+
+.info-loza div {
+    margin-bottom: 3rem;
+}
+
+.info-loza p {
+    text-align: justify;
+}
+
+.info-loza i {
+    font-size: 5rem;
+    color: #778da9;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.info-loza b {
+    font-size: 1.6rem;
+    color: #1b263b;
+}
+
+@media screen and (min-width: 768px) {
+    .info-loza {
+        column-gap: 3rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .info-loza {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 5rem;
+        justify-items: center;
+        text-align: center;
+    }
+}
+
+
+/**Reviews**/
+
+.reviews-clientes {
+    display: block;
+}
+
+.review {
+    display: block;
+    background-color: #778da9;
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
+    margin-bottom: 4rem;
+}
+
+.texto-review {
+    padding: 2rem 1rem;
+    color: white;
+}
+
+.texto-review span {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #1b263b;
+}
+
+.texto-review b {
+    color: #1b263b;
+}
+
+.puntuacion {
+    margin-top: 1.5rem;
+    display: flex;
+    color: goldenrod;
+}
+
+.puntuacion i {
+    margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .reviews-clientes {
+        display: flex;
+        justify-content: space-between;
+    }
+    .review {
+        display: flex;
+        width: calc(50% - 2rem);
+        margin-bottom: 0rem;
+    }
+    .review img {
+        width: 30rem;
+        margin-right: 1.5rem;
+    }
+}
+
+
+/**********************/
+
+
+/**COLECCIONES**/
+
+
+/**********************/
+
+.titulo-consulta {
+    margin: 15% 0 5% 0;
+    color: #415a77;
+    font-family: "Poppins", sans-serif;
+    font-size: 4rem;
+}
+
+.encabezado-coleccion {
+    background-size: cover;
+    height: 48rem;
+    margin-top: 10%;
+    position: relative;
+}
+
+.cover-coleccion-sw {
+    background-image: url(/img/starwars-cover.jpg);
+    background-position: center 60%;
+}
+
+.cover-coleccion-mrobot {
+    background-image: url(/img/mrrobot-cover.png);
+    background-position: center top;
+}
+
+.cover-coleccion-marvel {
+    background-image: url(/img/marvel-cover.jpg);
+    background-position: center top;
+}
+
+.cover-coleccion-breakingbad {
+    background-image: url(/img/brba-cover2.jpg);
+    background-position: center bottom;
+}
+
+.cover-coleccion-naruto {
+    background-image: url(/img/naruto-cover.jpeg);
+    background-position: center 10%;
+}
+
+/* AQUI */
+.cover-coleccion-wishlist {
+    background-image: url(/img/wishes.jpg);
+    background-position: center 10%;
+}
+
+.cover-coleccion-account {
+    background-image: url(/img/identificate.png);
+    background-position: center 10%;
+}
+
+.encabezado-coleccion h2 {
+    color: white;
+    font-size: 5rem;
+    margin: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.filtro-productos p {
+    margin-right: 1rem;
+    font-size: 1.8rem;
+}
+
+.filtro-productos select,
+.filtro-productos option {
+    font-size: 1.5rem;
+    border: none;
+    background-color: #415a77;
+    color: white;
+    height: 3.5rem;
+    cursor: pointer;
+    resize: none;
+    outline: none;
+}
+
+.filtro-productos select {
+    font-weight: bold;
+}
+
+.filtro-productos {
+    margin-bottom: 5%;
+}
+
+.texto-logo {
+    margin-bottom: 0;
+}
+
+.carousel-item img {
+    height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-item img {
+        height: 50vh;
+    }
+    #carousel {
+        margin-top: 20%;
+    }
+}

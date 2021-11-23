@@ -103,40 +103,11 @@ var comes_from_selection = false;
 var user_id = 0;
 var comment_to_edit = undefined;
 
+//////////////////////////////////////
 app.get("/solar",verify,function(req,res){
-	if (comes_from_selection)
-		comes_from_selection = false;
-	else
-		selection = undefined;
-
-	Artwork.find({gallery: "solar"}, async (error, docs) => {
-		if (error) 
-			console.log(error);
-		else {
-			var comment_section = undefined;
-
-			if (selection) 
-				await Comment.find({
-					artwork: selection.work_title
-				}, (error, doc) => {
-					if (error)
-						console.log(error);
-					else
-						comment_section = doc;
-				});
-
-			res.render("gallery", {
-				gallery_name: 'Space Gallery',
-				docs: docs,
-				selected: selection,
-				comments: comment_section,
-				comment_to_edit: comment_to_edit,
-				user: usuarioActual // Cambiar a usuario actual
-			});
-		}
-	});
+	res.render("vuelos", {repetido:'Registro'});	
 })
-
+//////////////////////////////////////
 app.post('/view_img', verify,(req, res) => {
 	var img_name = req.body.img;
 	var docs = Artwork.find({gallery: "solar"});
