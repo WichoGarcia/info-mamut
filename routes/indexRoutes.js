@@ -38,7 +38,13 @@ app.post('/',async function(req,res){
 					var token = jwt.sign({id:user.usuario,permission:true},process.env.SECRET,{expiresIn: "1h"});
 					res.cookie("token",token,{httpOnly: true});
 
+					console.log(user.tipo)
+					if(user.tipo=="admin"){
+						res.redirect("/administrador")
+					}
+					else{
                     res.redirect("/menu");
+					}
                 }
                 else{
                     res.render('',{autenticar:'',valido:'no'});
@@ -68,7 +74,8 @@ app.post('/signUp',async function(req,res){
                 nombre: req.body.nombre,
                 usuario: req.body.usuario,
                 correo: req.body.correo,
-                password: hashedPass
+                password: hashedPass,
+				tipo: "usuario"
                 
             });
             await usuario.save(err =>{
@@ -83,6 +90,9 @@ app.post('/signUp',async function(req,res){
     });
 })
 
+app.get("/administrador",verify,function(req,res){
+	res.render("admin")
+})
 
 app.get("/menu",verify,function(req,res){
     res.render("menu");
