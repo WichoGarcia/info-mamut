@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    </head>
+    <body>
+        <a href="/administrador"><p id="back">Volver al menú de administrador</p></a>
+        <container id="vuelos">
+            <container id="Header">
+                <p>Número de vuelo</p>
+                <p>Origen</p>
+                <p>Destino</p>
+                <p>Hora despegue</p>
+            </container>
+        <% data.forEach(function(foundData, i){%> 
+            <container id="infoVuelos">
+            <p><%= foundData.numVuelo %></p>
+            <p><%= foundData.ciudadOrigen %></p>
+            <p><%= foundData.ciudadDestino %></p>
+            <% if(foundData.minutoSalida >= 0 && foundData.minutoSalida < 10){ %>
+                <p><%= foundData.horaSalida %>:0<%= foundData.minutoSalida %></p>
+                <%}else { %>
+            <p><%= foundData.horaSalida %>:<%= foundData.minutoSalida %></p>
+            <% } %>
+            <form action="/<%= foundData._id %>/delete" method="post" style="display: inline;">
+                <button type="submit" style="padding: none; border:none; margin: none; background:none;">
+                    <i class="fas fa-minus-circle" style="color: red;"></i>
+                </button>
+            </form>
+        </container>
+            <%})%>
+            <container id="agregar">
+                <a href="registrarVuelo"><p>Agregar Vuelo</p></a>
+
+            </container>
+        </container>
+    </body>
+
+    <style>
+        body{
+            background-image: url('https://img5.goodfon.com/wallpaper/nbig/8/be/boeing-737-300-er-turkish-airlines-istanbul-airport.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        }
+        p{
+            color:white;
+            font-family: monospace;
+            font-size: 16px;
+        }
+        #back{
+            border-radius: 5px;
+            color: black;
+            width: 200px;
+            background-color: #ffc4129f;
+        }
+        #vuelos{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color:rgba(0, 0, 0, 0.657);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        #Header{
+            display: flex;
+            flex-direction: row;
+            align-self: flex-start;
+            gap:250px;
+        }
+        #infoVuelos{
+            display: flex;
+            flex-direction: row;
+            gap:275px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        #agregar{
+            border-radius: 8px;
+            background-color: rgba(13, 190, 13, 0.8);
+            margin:15px;
+        }
+    </style>
+</html>

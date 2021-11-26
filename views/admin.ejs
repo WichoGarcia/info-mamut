@@ -1,4 +1,92 @@
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!DOCTYPE html>
 <html>
-    <h>hola</h>
+<body>
+<header>
+  <h1>Info-mamut</h1>
+  <a href="/logout"><h1>Cerrar Sesión</h1></a>
+</header>
+<div class="flex">
+<div class="container">
+    
+  <img src="https://inmobiliare.com/himalaya/wp-content/uploads/2021/03/90.jpeg" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <a href="/administrarVuelos"><div class="text">Administra vuelos</div></a>
+  </div>
+</div>
+
+<div class="container">
+    <img src="https://1.bp.blogspot.com/-SOBtlq7W10Y/X85hjSCDa4I/AAAAAAAA34w/WsLjRYVK6Cw53hZVHMn3jvcTjVxKMHhRwCLcBGAsYHQ/w640-h360/viaje.png" alt="Avatar" class="image" style="width:100%">
+    <div class="middle">
+      <a href="/apiVuelos"><div class="text">Api vuelos</div></a>
+    </div>
+  </div>
+  </div>
+</body>
+<style>
+    body{
+        background-image: url('https://img5.goodfon.com/wallpaper/nbig/8/be/boeing-737-300-er-turkish-airlines-istanbul-airport.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    header{
+      color: lightseagreen;
+      display: flex;
+      flex-direction: row;
+      gap: 1139px;
+      top: 0px;
+      left: 0px;
+      position: absolute;
+      background-color: FFC312;
+    }
+    .container {
+      position: relative;
+      width: 50%;
+      margin-top: 200px;
+    }
+
+    .flex{
+        display: flex;
+        flex-flow: wrap row;
+        align-items: flex-end;
+        justify-content: center
+    }
+    
+    .image {
+      border-radius: 8px;
+      opacity: 1;
+      display: block;
+      width: 100%;
+      height: 400px;
+      transition: .5s ease;
+      backface-visibility: hidden;
+    }
+    
+    .middle {
+      transition: .5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%)
+    }
+    
+    .container:hover .image {
+      opacity: 0.3;
+    }
+    
+    .container:hover .middle {
+      opacity: 1;
+    }
+    
+    .text {
+      background-color:#FFC312;;
+      color: white;
+      font-size: 16px;
+      padding: 16px 32px;
+    }
+    </style>
 </html>
