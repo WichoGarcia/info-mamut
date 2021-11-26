@@ -1,6 +1,8 @@
 const express = require('express');
+const mongoose = require('mongoose')
 const app = express();
 const User = require("../models/usuario");
+const Vuelo = require("../models/vuelo")
 const Comment = require("../models/comment");
 const Artwork = require("../models/artwork");
 const bcrypt = require("bcrypt");
@@ -8,8 +10,12 @@ const jwt = require("jsonwebtoken");
 
 
 const verify = require("../middlewares/verifyToken");
+const { text } = require('express');
 
 var usuarioActual;
+var tipoUser;
+
+
 
 app.get('/', async function(req,res){
     res.render('index',{valido:'',autenticar:''});
@@ -37,7 +43,7 @@ app.post('/',async function(req,res){
 					usuarioActual= usuario;
 					var token = jwt.sign({id:user.usuario,permission:true},process.env.SECRET,{expiresIn: "1h"});
 					res.cookie("token",token,{httpOnly: true});
-
+                    tipoUser=user.tipo
 					console.log(user.tipo)
 					if(user.tipo=="admin"){
 						res.redirect("/administrador")
@@ -91,7 +97,97 @@ app.post('/signUp',async function(req,res){
 })
 
 app.get("/administrador",verify,function(req,res){
-	res.render("admin")
+    if(tipoUser=="admin"){
+        res.render("admin")
+    }
+    else{
+        res.redirect("/logout")
+    }
+	
+})
+
+app.get("/registrarVuelo",verify,function(req,res){
+    if(tipoUser=="admin"){
+        res.render("registroVuelo")
+    }
+    else{
+        res.redirect("/logout")
+    }
+    
+})
+
+app.post("/registrarVuelo",verify,async function(req,res){
+    if(tipoUser=="admin"){
+        var vuelo = new Vuelo({
+        numVuelo : req.body.numVuelo,
+        aerolinea: req.body.aerolinea,
+        ciudadOrigen : req.body.ciudadorigen,
+        ciudadDestino : req.body.ciudaddestino,
+        fSalida : req.body.fsalida,
+        horaSalida: req.body.hsalida,
+        minutoSalida: req.body.msalida
+    })
+    await vuelo.save(err =>{
+        if(err){
+        }
+        else{
+            res.redirect("/administrarVuelos")
+        }
+    })
+    }
+    else{
+        res.redirect("/logout")
+    }
+    
+})
+
+app.get("/administrarVuelos",verify,function(req,res){
+    if(tipoUser=="admin"){  
+          Vuelo.find({}, function(err, vuelos) {
+        if (err){
+            console.log(err);
+        }else{
+            res.render('adminVuelos', { data: vuelos});
+            }
+        });
+    }
+    else{
+        res.redirect("/logout")
+    }
+
+})
+
+app.post("/:id/delete",verify,async(req,res)=>{
+    if(tipoUser=="admin"){
+        try{
+            await Vuelo.findByIdAndDelete(req.params.id);
+            res.redirect("/administrarVuelos")
+        }
+        catch(err){
+            console.log(err)
+            res.redirect("/administrarVuelos")
+        }
+    }
+    else{
+        res.redirect("/logout")
+    }
+
+})
+
+app.get("/apivuelos",verify,function(req,res){
+    if(tipoUser=="admin"){
+        Vuelo.find({}, function(err, vuelos) {
+            if (err){
+                console.log(err);
+            }else{
+                res.render('apiVuelos', { data: vuelos});
+                }
+            });
+    }
+    else{
+        res.redirect("/logout")
+    }
+
 })
 
 app.get("/menu",verify,function(req,res){
@@ -103,105 +199,7 @@ var comes_from_selection = false;
 var user_id = 0;
 var comment_to_edit = undefined;
 
-//////////////////////////////////////
-app.get("/solar",verify,function(req,res){
-	res.render("vuelos", {repetido:'Registro'});	
-})
-//////////////////////////////////////
-app.post('/view_img', verify,(req, res) => {
-	var img_name = req.body.img;
-	var docs = Artwork.find({gallery: "solar"});
 
-	comment_to_edit = undefined;
-
-	Artwork.find({work_title: img_name}, async (error, doc) => {
-		if (error)
-			console.log(error);
-		else {
-			selection = doc[0];
-			comes_from_selection = true;
-			res.redirect('/solar');
-		}
-	});
-});
-
-app.post('/publishComment',verify, async (req, res) => {
-	var msg = req.body;
-
-	if (msg.comment) {
-		var comment = msg.comment;
-
-		Comment.find({
-			artwork: selection.work_title,
-			user: usuarioActual // Cambiar a usuario actual
-		}, async (error, docs) => {
-			if (error)
-				console.log(error);
-			else {
-				var can_publish = docs.length == 0;
-
-				if (can_publish) {
-					var new_comment = new Comment({
-						text: comment,
-						user: usuarioActual, // Cambiar a usuario actual
-						artwork: selection.work_title
-					});
-
-					await new_comment.save((error) => {
-						if (error) console.log(error)
-					});
-				}
-			}
-		});
-	} else if (msg.update_comment) {
-		await Comment.updateOne({
-			artwork: comment_to_edit.artwork,
-			user: comment_to_edit.user
-		}, {
-			text: msg.update_comment
-		});
-
-		comment_to_edit = undefined;
-	}
-
-	comes_from_selection = true;
-	res.redirect('/solar');
-});
-
-app.post('/comment_change',verify, async (req, res) => {
-	var msg = req.body;
-
-	if (msg.edit) {
-		var comment_id = msg.edit.split(',');
-		comes_from_selection = true;
-
-		Comment.find({
-			artwork: selection.work_title,
-			user: usuarioActual // Cambiar a usuario actual
-		}, (error, doc) => {
-			if (error)
-				console.log(error);
-			else
-				comment_to_edit = doc[0]
-		});
-
-	} else if (msg.delete) {
-		var comment_id = msg.delete.split(',');
-		comes_from_selection = true;
-
-		Comment.deleteOne({
-			user: comment_id[0], 
-			artwork: comment_id[1]
-		}, (error) => {
-			if (error)
-				console.log(error);
-		});
-		
-	} else 
-		console.log("Error: request not valid");
-
-	res.redirect('/solar');
-});
 
 function isCorrectPassword(passwordI,password,callback){
     bcrypt.compare(passwordI,password,function(err,same){

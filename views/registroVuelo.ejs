@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registro de vuelo</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+  </head>
+  <body>
+    <div class="main-block">
+      <div class="left-part">
+      <form method="post" action="/registrarVuelo">
+        <div class="title">
+          <i class="fas fa-plane"></i> 
+          <h2>Nuevo vuelo</h2>
+        </div>
+        <div class="info">
+          <input class="fname" type="text" name="numVuelo" placeholder="Número de vuelo">
+		  <select class="opciones" id="aerolineas" name="aerolinea">
+			  <option value="" selected>Aerolínea*</option>
+			  <option value="Aeromexico">Aeroméxico</option>
+			  <option value="Air Canada">Air Canada</option>
+			  <option value="Air France">Air France</option>
+			  <option value="Delta">Delta airlines</option>
+			  <option value="Emirates">Emirates</option>
+			  <option value="Iberia">Iberia</option>
+			  <option value="KLM">KLM</option>
+			  <option value="Viva aerobus">Viva aerobus</option>
+			  <option value="Volaris">Volaris</option>
+		  </select>
+          <select class="opciones" id="ciudades" name="ciudadorigen">
+            <option value="" selected>Ciudad Origen*</option>
+			<option value="Abu Dhabi">Abu Dhabi</option>
+			<option value="Acapulco">Acapulco</option>
+			<option value="Amsterdam">Amsterdam</option>
+			<option value="Atlanta">Atlanta</option>
+			<option value="Barcelona">Barcelona</option>
+			<option value="Buenos Aires">Buenos Aires</option>
+			<option value="Cancun">Cancún</option>
+            <option value="CDMX">Ciudad de México</option>
+			<option value="Dubai">Dubai</option>
+			<option value="Londres">Londres</option>
+			<option value="Los Angeles">Los Angeles</option>
+			<option value="Madrid">Madrid</option>
+			<option value="Monterrey">Monterrey</option>
+			<option value="Montreal">Montreal</option>
+			<option value="Nueva York">Nueva York</option>
+            <option value="Paris">París</option>
+			<option value="Rio de Janeiro">Río de Janeiro</option>
+			<option value="Roma">Roma</option>
+			<option value="San Francisco">San Francisco</option>
+			<option value="Toronto">Toronto</option>
+          </select>
+		  <select class="opciones" id="ciudades" name="ciudaddestino">
+            <option value="" selected>Ciudad Destino*</option>
+			<option value="Abu Dhabi">Abu Dhabi</option>
+			<option value="Acapulco">Acapulco</option>
+			<option value="Amsterdam">Amsterdam</option>
+			<option value="Atlanta">Atlanta</option>
+			<option value="Barcelona">Barcelona</option>
+			<option value="Buenos Aires">Buenos Aires</option>
+			<option value="Cancun">Cancún</option>
+            <option value="CDMX">Ciudad de México</option>
+			<option value="Dubai">Dubai</option>
+			<option value="Londres">Londres</option>
+			<option value="Los Angeles">Los Angeles</option>
+			<option value="Madrid">Madrid</option>
+			<option value="Monterrey">Monterrey</option>
+			<option value="Montreal">Montreal</option>
+			<option value="Nueva York">Nueva York</option>
+            <option value="Paris">París</option>
+			<option value="Rio de Janeiro">Río de Janeiro</option>
+			<option value="Roma">Roma</option>
+			<option value="San Francisco">San Francisco</option>
+			<option value="Toronto">Toronto</option>
+          </select>
+		  <label name="salida">
+			Fecha de salida:
+			<input type="date" name="fsalida">
+		  </label>
+		  <input type="number" name="hsalida" placeholder="0" min="0" max="23">
+		  <input type="number" name="msalida" placeholder="00" min="0" max="59">
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+  <style>
+	html, body {
+	min-height: 100%;
+	}
+	body, div, form, input, select, p { 
+	padding: 0;
+	margin: 0;
+	outline: none;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 16px;
+	color: #eee;
+	}
+	body {
+	background: url("https://img5.goodfon.com/wallpaper/nbig/8/be/boeing-737-300-er-turkish-airlines-istanbul-airport.jpg") no-repeat center;
+	background-size: cover;
+	}
+	h1, h2 {
+	text-transform: uppercase;
+	font-weight: 400;
+	}
+	h2 {
+	margin: 0 0 0 8px;
+	}
+	.main-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 25px;
+	background: rgba(0, 0, 0, 0.5); 
+	}
+	.left-part, form {
+	padding: 25px;
+	}
+	.left-part {
+	text-align: center;
+	}
+	.fa-graduation-cap {
+	font-size: 72px;
+	}
+	form {
+	background: rgba(0, 0, 0, 0.7); 
+	}
+	.title {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	}
+	.info {
+	display: flex;
+	flex-direction: column;
+	}
+	#icono{
+		size: 200%;
+	}
+	input, select {
+	padding: 5px;
+	margin-bottom: 30px;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #eee;
+	}
+	input::placeholder {
+	color: #eee;
+	}
+	option:focus {
+	border: none;
+	}
+	option {
+	background: black; 
+	border: none;
+	}
+	.checkbox input {
+	margin: 0 10px 0 0;
+	vertical-align: middle;
+	}
+	.checkbox a {
+	color: #26a9e0;
+	}
+	.checkbox a:hover {
+	color: #85d6de;
+	}
+	.btn-item, button {
+	padding: 10px 5px;
+	margin-top: 20px;
+	border-radius: 5px; 
+	border: none;
+	background: #26a9e0; 
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 400;
+	color: #fff;
+	}
+	.btn-item {
+	display: inline-block;
+	margin: 20px 5px 0;
+	}
+	button {
+	width: 100%;
+	}
+	button:hover, .btn-item:hover {
+	background: #85d6de;
+	}
+	@media (min-width: 568px) {
+	html, body {
+	height: 100%;
+	}
+	.main-block {
+	flex-direction: row;
+	height: calc(100% - 50px);
+	}
+	.left-part, form {
+	flex: 1;
+	height: auto;
+	}
+	}
+  </style>
+</html>
