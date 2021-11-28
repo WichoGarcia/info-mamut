@@ -174,6 +174,13 @@ app.post("/:id/delete",verify,async(req,res)=>{
 
 })
 
+app.get("/solar",verify,function(req,res){  
+        res.render("vuelos");
+    
+
+})
+
+
 app.get("/apivuelos",verify,function(req,res){
     if(tipoUser=="admin"){
         Vuelo.find({}, function(err, vuelos) {
