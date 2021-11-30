@@ -174,10 +174,8 @@ app.post("/:id/delete",verify,async(req,res)=>{
 
 })
 
-app.get("/solar",verify,function(req,res){  
+app.get("/vuelos",verify,function(req,res){  
         res.render("vuelos");
-    
-
 })
 
 
